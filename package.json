@@ -1,0 +1,18 @@
+{
+  "name": "aidevs",
+  "module": "helloapi.ts",
+  "type": "module",
+  "scripts": {
+    "helloapi": "bun run tasks/helloapi/index.ts",
+    "moderation": "bun run tasks/moderation/index.ts"
+  },
+  "devDependencies": {
+    "bun-types": "^1.0.8"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "openai": "^4.15.3"
+  }
+}
