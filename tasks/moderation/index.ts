@@ -1,14 +1,15 @@
 import OpenAI from 'openai';
 import { authorize, getTaskInput, sendResult } from '../../task-provider';
-import { GetInputResponse } from "./input.ts"
+import { ModerationInput } from './moderationInput.ts';
 const taskName = "moderation"
 const openai = new OpenAI();
 
 const token = await authorize(taskName);
-const input = await getTaskInput<GetInputResponse>(token);
+const input = await getTaskInput<ModerationInput>(token);
+console.log("Input", input)
 
 
-const results = await Promise.all(input.input.map(async (data) => {
+const results = await Promise.all(input.map(async (data) => {
     const moderation = await openai.moderations.create({
         input: data
     });
