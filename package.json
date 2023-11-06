@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "helloapi": "bun run tasks/helloapi/index.ts",
-    "moderation": "bun run tasks/moderation/index.ts"
+    "moderation": "bun run tasks/moderation/index.ts",
+    "blogger": "bun run tasks/blogger/index.ts"
   },
   "devDependencies": {
     "bun-types": "^1.0.8"
@@ -13,6 +14,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "langchain": "^0.0.180",
     "openai": "^4.15.3"
   }
 }

@@ -1,6 +1,4 @@
 import { AuthResponse } from "./types/authResponse";
-import { GetInputResponse } from "./types/getInputResponse";
-import { TaskInfo } from "./types/taskInfo";
 const apiKey = Bun.env.API_TOKEN;
 const baseUrl = Bun.env.API_URL;
 
@@ -20,14 +18,18 @@ export async function authorize(task: string): Promise<string> {
     return json.token;
 }
 
-export async function getTaskInput<T>(token: string): Promise<(TaskInfo<T>)> {
+export async function getTaskInput<T>(token: string): Promise<T> {
     const url = `${baseUrl}/task/${token}`;
     const response = await fetch(url);
-    const data = await response.json<GetInputResponse<T>>();
-    return {
-        Input: data.input,
-        Description: data.msg
-    }
+    const text = await response.json();
+    console.log(text);
+    const data = text as T;
+    const duration = 2 * 60;
+    setTimeout(() => {
+        console.error(`Timeout ${duration}s has passed`)
+        process.exit(1)
+    }, duration * 1000)
+    return data
 }
 
 export async function sendResult(token: string, answer: any): Promise<boolean> {
@@ -40,18 +42,17 @@ export async function sendResult(token: string, answer: any): Promise<boolean> {
             answer: answer
         })
     })
+    console.log("TASK RESULT:", await response.json())
     return response.status === 200;
 }
 
 export async function execute<T>(task: string, calculateResult: (arg: T) => any) {
     console.log(`Executing task: ${task}`)
     const token = await authorize(task);
-    const { Input: input, Description: description } = await getTaskInput<T>(token);
-    console.log("Description", description)
-    console.log("Input", input)
+    const data = await getTaskInput<T>(token);
 
-    const result = await calculateResult(input);
-
+    const result = await calculateResult(data);
+    console.log("result", result)
     const success = await sendResult(token, result);
     console.log(`Status for task ${task}:`, success ? "COMPLETED" : "ERROR")
 
