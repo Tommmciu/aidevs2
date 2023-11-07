@@ -1,7 +1,7 @@
 import { AuthResponse } from "./types/authResponse";
 const apiKey = Bun.env.API_TOKEN;
 const baseUrl = Bun.env.API_URL;
-
+const timeout = 2 * 60;
 export async function authorize(task: string): Promise<string> {
     const url = `${baseUrl}/token/${task}`
     const response = await fetch(url,
@@ -24,11 +24,8 @@ export async function getTaskInput<T>(token: string): Promise<T> {
     const text = await response.json();
     console.log(text);
     const data = text as T;
-    const duration = 2 * 60;
-    setTimeout(() => {
-        console.error(`Timeout ${duration}s has passed`)
-        process.exit(1)
-    }, duration * 1000)
+
+
     return data
 }
 
@@ -49,12 +46,19 @@ export async function sendResult(token: string, answer: any): Promise<boolean> {
 export async function execute<T>(task: string, calculateResult: (arg: T) => any) {
     console.log(`Executing task: ${task}`)
     const token = await authorize(task);
+
+    const timer = setTimeout(() => {
+        console.error(`Timeout ${timeout}s has passed`)
+        process.exit(1)
+    }, timeout * 1000)
+
     const data = await getTaskInput<T>(token);
 
     const result = await calculateResult(data);
+
     console.log("result", result)
     const success = await sendResult(token, result);
     console.log(`Status for task ${task}:`, success ? "COMPLETED" : "ERROR")
 
-
+    clearTimeout(timer);
 }
