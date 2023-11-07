@@ -26,9 +26,7 @@ await execute(taskName, async (input: BloggerInput): Promise<BloggerAnswer> => {
         modelName: "gpt-3.5-turbo"
     });
 
-    let texts: string[] = []
-
-    for (const title of input.blog) {
+    const texts = Promise.all(input.blog.map(async title => {
         const formattedChatPrompt = await chatPrompt.formatMessages({
             context,
             role: "Copywriter",
@@ -41,9 +39,9 @@ await execute(taskName, async (input: BloggerInput): Promise<BloggerAnswer> => {
         const { content } = await chat.call(formattedChatPrompt);
         const seconds = (Date.now() - start) / 1000;
         console.log(`Took ${seconds} seconds to call API`)
-        texts.push(content)
+        return content
+    }))
 
-    }
 
     return texts;
 })
