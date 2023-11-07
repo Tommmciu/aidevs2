@@ -28,8 +28,7 @@ await execute(taskName, async (input: BloggerInput): Promise<BloggerAnswer> => {
 
     let texts: string[] = []
 
-    for (let i = 0; i < 4; ++i) {
-        const title = input.blog[i]
+    for (const title of input.blog) {
         const formattedChatPrompt = await chatPrompt.formatMessages({
             context,
             role: "Copywriter",
