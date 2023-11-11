@@ -18,15 +18,24 @@ export async function authorize(task: string): Promise<string> {
     return json.token;
 }
 
-export async function getTaskInput<T>(token: string): Promise<T> {
+export async function getTaskInput<T>(token: string,): Promise<T> {
     const url = `${baseUrl}/task/${token}`;
     const response = await fetch(url);
     const text = await response.json();
     console.log(text);
     const data = text as T;
-
-
     return data
+}
+export async function postTaskInput<T>(token: string, data: FormData): Promise<T> {
+    const url = `${baseUrl}/task/${token}`;
+    const response = await fetch(url, {
+        method: "post",
+        body: data
+    });
+    const text = await response.json();
+    console.log(text);
+    const responseData = text as T;
+    return responseData
 }
 
 export async function sendResult(token: string, answer: any): Promise<boolean> {

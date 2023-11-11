@@ -8,7 +8,7 @@ const taskName = "blogger"
 
 await execute(taskName, async (input: BloggerInput): Promise<BloggerAnswer> => {
     const systemTemplate = `
-    Jako {role} tworzysz wpisy na bloga. Do każdego podttytułu napisz treść rozdziału. Nie uwględniaj innych aspektów niż ten o który prosiłem. Postaraj się odpawiadać krótko i zwięźle. Najlepiej w 2-3 zdaniach ale w takim stopniu by móc przygotować z tą wiedzą pizze
+    Jako {role} tworzysz wpisy na bloga. Do każdego podttytułu napisz krótki rozdział. Nie uwględniaj innych aspektów niż ten o który prosiłem. Postaraj się odpawiadać krótko i zwięźle
      ###{context}###
     `;
 

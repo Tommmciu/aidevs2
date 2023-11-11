@@ -5,7 +5,8 @@
   "scripts": {
     "helloapi": "bun run tasks/helloapi/index.ts",
     "moderation": "bun run tasks/moderation/index.ts",
-    "blogger": "bun run tasks/blogger/index.ts"
+    "blogger": "bun run tasks/blogger/index.ts",
+    "liar": "bun run tasks/liar/index.ts"
   },
   "devDependencies": {
     "bun-types": "^1.0.8"
