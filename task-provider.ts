@@ -11,7 +11,7 @@ export async function authorize(task: string): Promise<string> {
                 apikey: apiKey
             }),
         })
-    const json = await response.json<AuthResponse>();
+    const json = await response.json() as AuthResponse;
     if (response.status !== 200)
         throw new Error(`Request failed. Got response code: ${response.status}. Message: ${json.msg}`)
 
