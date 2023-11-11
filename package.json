@@ -8,7 +8,8 @@
     "blogger": "bun run tasks/blogger/index.ts",
     "liar": "bun run tasks/liar/index.ts",
     "inprompt": "bun run tasks/inprompt/index.ts",
-    "embedding": "bun run tasks/embedding/index.ts"
+    "embedding": "bun run tasks/embedding/index.ts",
+    "whisper": "bun run tasks/whisper/index.ts"
   },
   "devDependencies": {
     "bun-types": "^1.0.8"

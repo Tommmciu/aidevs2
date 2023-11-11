@@ -42,12 +42,16 @@ export async function sendResult(token: string, answer: any): Promise<boolean> {
 
     const url = `${baseUrl}/answer/${token}`;
 
+    const json = JSON.stringify({
+        answer: answer
+    })
+    console.info("Sending:", json)
     const response = await fetch(url, {
         method: 'POST',
-        body: JSON.stringify({
-            answer: answer
-        })
+        body: json
     })
+
+    console.log(response.status)
     console.log("TASK RESULT:", await response.json())
     return response.status === 200;
 }
