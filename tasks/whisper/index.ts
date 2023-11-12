@@ -1,5 +1,5 @@
 import { execute } from "../../task-provider";
-import { InputWhisper } from "./inputWhisper";
+import { WhisperInput } from "./WhisperInput";
 import { OpenAI, toFile } from "openai";
 import fs from "fs"
 
@@ -24,7 +24,7 @@ const filename = (url: string): string => {
     return parts[parts.length - 1]
 }
 
-await execute(taskName, async (input: InputWhisper) => {
+await execute(taskName, async (input: WhisperInput) => {
     const client = new OpenAI()
 
     const url = extractUrl(input.msg)
