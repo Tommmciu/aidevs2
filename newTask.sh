@@ -26,6 +26,11 @@ add_script_to_package_json() {
 }
 
 # Main script
+if ! command -v jq &> /dev/null; then
+    echo "Error: jq is not installed. Please install jq before running this script."
+    exit 1
+fi
+
 echo "Please enter the directory:"
 read task
 
