@@ -19,15 +19,19 @@ const extractUrl = (input: string): string => {
     }
 }
 
+const filename = (url: string): string => {
+    const parts = url.split('/')
+    return parts[parts.length - 1]
+}
+
 await execute(taskName, async (input: InputWhisper) => {
     const client = new OpenAI()
 
     const url = extractUrl(input.msg)
-    //TODO: Read from URL
-    const file = fs.createReadStream("tasks/whisper/mateusz.mp3")
+    const response = await fetch(url)
     const { text: transctiption } = await client.audio.transcriptions.create({
         model: "whisper-1",
-        file: await toFile(file)
+        file: await toFile(response.blob(), filename(url))
     })
     return transctiption
 })
