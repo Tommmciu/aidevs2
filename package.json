@@ -3,6 +3,7 @@
   "module": "helloapi.ts",
   "type": "module",
   "scripts": {
+    "new": "./newTask.sh",
     "helloapi": "bun run tasks/helloapi/index.ts",
     "moderation": "bun run tasks/moderation/index.ts",
     "blogger": "bun run tasks/blogger/index.ts",
