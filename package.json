@@ -9,7 +9,8 @@
     "liar": "bun run tasks/liar/index.ts",
     "inprompt": "bun run tasks/inprompt/index.ts",
     "embedding": "bun run tasks/embedding/index.ts",
-    "whisper": "bun run tasks/whisper/index.ts"
+    "whisper": "bun run tasks/whisper/index.ts",
+    "functions": "bun run tasks/functions/index.ts"
   },
   "devDependencies": {
     "bun-types": "^1.0.8"
