@@ -4,8 +4,31 @@
 create_files() {
     local directory=$1
     local task=$2
+
+    local input_filename="$task""Input"
     touch "$directory/index.ts"
-    touch "$directory/$task""Input.ts"
+    touch "$directory/$input_filename"".ts"
+
+    local first_letter=
+    first_letter=$(echo "${task}" | cut -c1 | tr '[:lower:]' '[:upper:]')
+    local task_cap="${first_letter}${task:1}"
+    local input_class="$task_cap""Input"
+    local index_content="import { execute } from \"../../task-provider\";
+import { $input_class } from \"./$input_filename\"
+
+const taskName=\"$task\"    
+await execute(taskName, async (input: $input_class) => {
+    process.exit(1)
+})"
+
+    local input_content="export type $task_cap""Input = {
+    code: number,
+    msg: string,
+    hint: string
+}"
+
+    echo "$index_content" > "$directory/index.ts"
+    echo "$input_content" > "$directory/$task""Input.ts"
 }
 
 add_script_to_package_json() {
