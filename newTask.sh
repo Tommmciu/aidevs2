@@ -3,7 +3,9 @@
 # Function to create files in the specified directory
 create_files() {
     local directory=$1
+    local task=$2
     touch "$directory/index.ts"
+    touch "$directory/$task""Input.ts"
 }
 
 add_script_to_package_json() {
@@ -42,6 +44,6 @@ if [ -d "$directory" ]; then
 else
     echo "Directory does not exist. Creating directory and files."
     mkdir -p "$directory"
-    create_files "$directory"
+    create_files "$directory" "$task"
     add_script_to_package_json "$task"
 fi
