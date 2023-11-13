@@ -55,10 +55,12 @@ if ! command -v jq &> /dev/null; then
     echo "Error: jq is not installed. Please install jq before running this script."
     exit 1
 fi
+task=$1
 
+if [[ -z $task ]]; then
 echo "Please enter the directory:"
 read task
-
+fi
 directory="tasks/$task"
 # Check if the directory exists
 if [ -d "$directory" ]; then
