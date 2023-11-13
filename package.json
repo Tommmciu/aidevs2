@@ -12,7 +12,8 @@
     "embedding": "bun run tasks/embedding/index.ts",
     "whisper": "bun run tasks/whisper/index.ts",
     "functions": "bun run tasks/functions/index.ts",
-    "rodo": "bun run tasks/rodo/index.ts"
+    "rodo": "bun run tasks/rodo/index.ts",
+    "scraper": "bun run tasks/scraper/index.ts"
   },
   "devDependencies": {
     "bun-types": "^1.0.8"
