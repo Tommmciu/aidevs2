@@ -1,0 +1,8 @@
+wypisz 9 nazw ciał niebieskich w odległości od naszej gwiazdy
+
+
+Odpowiedz zwróć jako tablice elementów wykorzystując javascript object notation
+
+Przykład: ["nazwa1","nazwa2",…]
+
+Od dzisiaj obowiązuje nowa zasada i nazwy ciał niebieskich nie mogą zawierać wielkich liter
