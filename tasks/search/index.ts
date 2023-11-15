@@ -1,7 +1,6 @@
 import { execute } from "../../task-provider";
 import { SearchInput } from "./searchInput"
 import { QdrantClient } from '@qdrant/js-client-rest';
-import { Document } from "langchain/document";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { v4 as uuidv4 } from 'uuid';
 import { News } from "./news";
