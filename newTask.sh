@@ -18,7 +18,7 @@ import { $input_class } from \"./$input_filename\"
 
 const taskName=\"$task\"    
 await execute(taskName, async (input: $input_class) => {
-    process.exit(1)
+    throw Error('Not implemented')
 })"
 
     local input_content="export type $task_cap""Input = {
