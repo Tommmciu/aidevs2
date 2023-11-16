@@ -39,10 +39,6 @@ const loadData = async () => {
             },
         }));
 
-
-        // Generate embeddings
-
-
         const points = await Promise.all(
             documents.map(async (document) => {
                 const [embedding] = await embeddings.embedDocuments([document.pageContent.title]);
