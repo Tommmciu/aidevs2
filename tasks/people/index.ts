@@ -1,4 +1,3 @@
-import { open } from "fs";
 import { execute } from "../../task-provider";
 import { PeopleInput } from "./peopleInput"
 import { Person } from "./person";

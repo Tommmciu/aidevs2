@@ -16,7 +16,8 @@
     "scraper": "bun run tasks/scraper/index.ts",
     "search": "bun run tasks/search/index.ts",
     "whoami": "bun run tasks/whoami/index.ts",
-    "people": "bun run tasks/people/index.ts"
+    "people": "bun run tasks/people/index.ts",
+    "knowledge": "bun run tasks/knowledge/index.ts"
   },
   "devDependencies": {
     "bun-types": "^1.0.8"

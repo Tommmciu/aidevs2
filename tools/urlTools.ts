@@ -1,5 +1,5 @@
 export const extractUrl = (input: string): string => {
-    const urlRegex = /(https?:\/\/[^\s]+)/;
+    const urlRegex = /(http(s?)?:\/\/[^\s]+)/;
 
     const extractedUrl = input.match(urlRegex);
 
