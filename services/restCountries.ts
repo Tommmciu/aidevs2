@@ -9,10 +9,13 @@ export class RestCountries {
     }
 
     async GetCountry(country: string): Promise<Country> {
-        const response = await fetch(`${this.BASEURL}`)
+        const url = `${this.BASEURL}/v3.1/name/${country}`
+        console.log(url)
+        const response = await fetch(url)
         if (response.status !== 200)
             throw Error(`Request failed with status: ${response.status}`)
-        return await response.json<Country>()
+        const json = await response.json()
+        return json[0] as Country
     }
 
     async GetPopulation(country: string): Promise<number> {

@@ -18,12 +18,6 @@ export type Country = {
     independent: boolean;
     status: string;
     unMember: boolean;
-    currencies: {
-        PLN: {
-            name: string;
-            symbol: string;
-        };
-    };
     idd: {
         root: string;
         suffixes: string[];
@@ -33,30 +27,13 @@ export type Country = {
     region: string;
     subregion: string;
     languages: {
-        pol: string;
     };
     translations: {
-        ara: {
-            official: string;
-            common: string;
-        };
-        // Add other language translations here
     };
     latlng: number[];
     landlocked: boolean;
     borders: string[];
     area: number;
-    demonyms: {
-        eng: {
-            f: string;
-            m: string;
-        };
-        fra: {
-            f: string;
-            m: string;
-        };
-        // Add other language demonyms here
-    };
     flag: string;
     maps: {
         googleMaps: string;

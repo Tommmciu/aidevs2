@@ -12,7 +12,9 @@ class ExchangeRates {
                 "Accept": "application/json"
             }
         };
-        return this._fetch(options, `/exchangerates/rates/a/${symbol}`);
+        const data = await this._fetch(options, `/exchangerates/rates/a/${symbol}`);
+
+        return data.rates[0].mid
     }
 
     private async _fetch(options: RequestInit, additionalPath = "") {

@@ -33,10 +33,12 @@ export const getPopulationSchema = {
     }
 }
 
-export const getPopulation = async (countryName: string): Promise<number> =>
-    await restCountries.GetPopulation(countryName)
+export const getPopulation = async ({ countryName }: { countryName: string }): Promise<number> => {
+    console.log(countryName)
+    return await restCountries.GetPopulation(countryName)
+}
 
-export const getRate = async (symbol: string) => {
+export const getRate = async ({ symbol }: { symbol: string }) => {
     return ExchangeRates.getCurrentRate(symbol)
 
 }
