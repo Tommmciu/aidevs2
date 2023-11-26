@@ -20,7 +20,8 @@
     "knowledge": "bun run tasks/knowledge/index.ts",
     "gnome": "bun run tasks/gnome/index.ts",
     "tools": "bun run tasks/tools/index.ts",
-    "ownapi": "bun run tasks/ownapi/index.ts"
+    "ownapi": "bun run tasks/ownapi/index.ts",
+    "optimaldb": "bun run tasks/optimaldb/index.ts"
   },
   "devDependencies": {
     "bun-types": "^1.0.8"
