@@ -19,7 +19,8 @@
     "people": "bun run tasks/people/index.ts",
     "knowledge": "bun run tasks/knowledge/index.ts",
     "gnome": "bun run tasks/gnome/index.ts",
-    "tools": "bun run tasks/tools/index.ts"
+    "tools": "bun run tasks/tools/index.ts",
+    "ownapi": "bun run tasks/ownapi/index.ts"
   },
   "devDependencies": {
     "bun-types": "^1.0.8"
