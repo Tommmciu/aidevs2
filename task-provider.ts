@@ -10,7 +10,7 @@ export async function authorize(task: string): Promise<string> {
                 apikey: apiKey
             }),
         })
-    const json = await response.json() as AuthResponse;
+    const json = await response.json();
     if (response.status !== 200)
         throw new Error(`Request failed. Got response code: ${response.status}. Message: ${json.msg}`)
 
@@ -55,7 +55,7 @@ export async function sendResult(token: string, answer: any): Promise<boolean> {
     return response.status === 200;
 }
 
-export async function execute<T>(task: string, calculateResult: (arg: T) => any) {
+export async function execute<T>(task: string, calculateResult: (arg: T) => any, send: boolean = true) {
     console.log(`Executing task: ${task}`)
     const token = await authorize(task);
 
@@ -64,6 +64,8 @@ export async function execute<T>(task: string, calculateResult: (arg: T) => any)
     const result = await calculateResult(data);
 
     console.log("result", result)
-    const success = await sendResult(token, result);
-    console.log(`Status for task ${task}:`, success ? "COMPLETED" : "ERROR")
+    if (send) {
+        const success = await sendResult(token, result);
+        console.log(`Status for task ${task}:`, success ? "COMPLETED" : "ERROR")
+    }
 }

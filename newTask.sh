@@ -19,7 +19,7 @@ import { $input_class } from \"./$input_filename\"
 const taskName=\"$task\"    
 await execute(taskName, async (input: $input_class) => {
     throw Error('Not implemented')
-})"
+},false)"
 
     local input_content="export type $task_cap""Input = {
     code: number,

@@ -11,3 +11,15 @@ export const parseFunctionCall = (
         args: JSON.parse(result.additional_kwargs.function_call.arguments),
     };
 };
+
+export async function parseConversation(conversation: BaseMessageChunk, tools: any) {
+    const action = parseFunctionCall(conversation)
+
+    if (action) {
+        console.log(`action: ${action.name}`);
+        console.log(action.args);
+        return await tools[action.name](action.args);
+    } else {
+        return conversation.content;
+    }
+}
